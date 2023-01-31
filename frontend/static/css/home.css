@@ -1,0 +1,52 @@
+.tiktok-home {
+  padding-top: 100px;
+  padding-left: 50px;
+  padding-right: 25px;
+}
+.tiktok-video-container {
+  height: 570px;
+  width: 325px;
+}
+.podcast--home {
+  margin-top: 7%;
+
+}
+.subscribe--page {
+  padding-bottom: 5%;
+  background-image: linear-gradient(#e7f2f4, #0b0b0b);
+}
+.tiktok--container {
+  height: 100px;
+  width: 100px;
+}
+.cover-art {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tabs--container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navbar--container {
+  display: flex;
+  align-self: center;
+  margin: "auto";
+  max-width: 925px;
+}
+.navbar--section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+}
+.audio--player{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.listen--btn{
+  max-width: 60px;
+}
