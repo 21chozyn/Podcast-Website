@@ -19,7 +19,7 @@ const HeroSection = () => {
         sx={{fontWeight:"bold", typography: { md: "h1", sm: "h2", xs: "h3" } }}
         color="common.white"
       >
-        Listen to the latest UZ storiees
+        Listen to the latest UZ stories
       </Typography>
       <Typography
         align="center"

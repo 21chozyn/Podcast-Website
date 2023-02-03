@@ -16,17 +16,17 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { FaTiktok } from "react-icons/fa";
 import DrawerComp from "./DrawerComp";
-import "../../static/css/index.css"
+import "../../static/css/index.css";
 
 const Header = () => {
   const navigate = useNavigate();
-  const pages = ["Home", "Podcasts", "Videos", "Team", "About", "Contact us"];
+  const pages = ["Home", "Podcasts", "Team", "Contact us"];
   const links = [
     "/",
     "/podcast",
-    "/videos",
+
     "/team",
-    "/about",
+
     "/contact",
     "https://twitter.com/Voice_Of_Peter?s=09",
     "https://www.facebook.com/sonofliterature?mibextid=ZbWKwL",
@@ -38,17 +38,16 @@ const Header = () => {
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
   const navigateTo = (index) => {
-    if (index>5) {
-      window.open(links[index],'_blank','noreferrer')
-      return
+    if (index > 5) {
+      window.open(links[index], "_blank", "noreferrer");
+      return;
     }
     navigate(links[index]);
   };
 
   return (
     <div className="Header">
-      <AppBar sx={{ background: "#2f4f4f" }}
-  >
+      <AppBar sx={{ background: "#2f4f4f" }}>
         <Toolbar>
           <PodcastsIcon sx={{ padding: "5px" }} />
           <Typography>The Rez Issues</Typography>

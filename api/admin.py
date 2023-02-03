@@ -5,5 +5,9 @@ from .models import Team, Podcast
 class PodcastAdmin(admin.ModelAdmin):
     list = ('id', 'title', 'coverArt', 'description', 'audio', "createdAt", "coHost", "host")
 
+class TeamAdmin(admin.ModelAdmin):
+    list = ('name', "aboutText", "picture")
+
 
 admin.site.register(Podcast, PodcastAdmin)
+admin.site.register(Team, TeamAdmin)

@@ -85,7 +85,6 @@ const PodcastHome = () => {
           </Button>
         </Stack>
       </Paper> */}
-      <br />
       <PodcastNavBar />
       <br />
       <br />

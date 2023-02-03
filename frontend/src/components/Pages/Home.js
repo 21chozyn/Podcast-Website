@@ -10,7 +10,7 @@ const Home = () => {
     <React.Fragment>
     <HeroSection />
     <PodcastHome />
-    <TikTokHome />
+    {/* <TikTokHome /> */}
     </React.Fragment>
   )
 }

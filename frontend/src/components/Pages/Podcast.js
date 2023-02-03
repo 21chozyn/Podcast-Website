@@ -1,13 +1,11 @@
-import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
-import AudioPlayer from "../AudioPlayer";
+import PodcastHome from "../PodcastHome";
 
 const Podcast = () => {
   return (
     <>
-      <br />
-      <br />
-      <AudioPlayer />
+
+      <PodcastHome/>
     </>
   );
 };
