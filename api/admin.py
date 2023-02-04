@@ -6,7 +6,7 @@ class PodcastAdmin(admin.ModelAdmin):
     list = ('id', 'title', 'coverArt', 'description', 'audio', "createdAt", "coHost", "host")
 
 class TeamAdmin(admin.ModelAdmin):
-    list = ('name', "aboutText", "picture")
+    list = ('name', "aboutText", "pictureThumb")
 
 
 admin.site.register(Podcast, PodcastAdmin)

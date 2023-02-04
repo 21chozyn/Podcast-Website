@@ -12,6 +12,7 @@ const Team = () => {
       aboutText:
         "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.",
       picture: "/static/images/avatar1.jpg",
+      pictureThumb:"http://127.0.0.1:8000/media/default.png"
     },
   ];
   const [teamMembers, setTeamMembers] = useState(
@@ -52,7 +53,7 @@ const Team = () => {
         </Grid>
         {teamMembers.map((member,index)=>(
           <Grid item xs={6}>
-          <TeamMember name={member.name} aboutText={member.aboutText} picture={member.picture}/>
+          <TeamMember name={member.name} aboutText={member.aboutText} picture={member.pictureThumb}/>
         </Grid>
         ))}
       </Grid>

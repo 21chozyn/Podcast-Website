@@ -4,7 +4,7 @@ from .models import Team, Podcast
 class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
-        fields = ('id', "name", "aboutText", 'picture')
+        fields = ('id', "name", "aboutText", 'pictureThumb')
 
 class PodcastSerializer(serializers.ModelSerializer):
      class Meta:
