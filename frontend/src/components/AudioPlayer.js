@@ -20,9 +20,9 @@ function AudioPlayer(props) {
     progressBar.current.max = seconds;
   }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
-  useEffect(()=> {
-    togglePlayPause()
-  },[audioPlayer?.current?.canplay])
+  useEffect(() => {
+    togglePlayPause();
+  }, [audioPlayer?.current?.canplay]);
 
   const calculateTime = (secs) => {
     const minutes = Math.floor(secs / 60); //to change to minutes in integers
@@ -69,7 +69,7 @@ function AudioPlayer(props) {
 
     changeRange();
   };
-  
+
   return (
     <div className="audio--player">
       <audio
@@ -78,6 +78,9 @@ function AudioPlayer(props) {
         preload="metadata"
         autoPlay
       ></audio>
+      <div className="cover--art">
+        <img src={props.coverArt} />
+      </div>
       <button className="forward--backward" onClick={backThirty}>
         <ArrowBackIosNewIcon />
         <p>30s</p>
@@ -93,7 +96,7 @@ function AudioPlayer(props) {
         <p>30s</p>
         <ArrowForwardIosIcon />
       </button>
-
+      {/* props.inpage is to render components that should not be rendered in the header */}
       <div className="current--time"> {calculateTime(currentTime)}</div>
 
       {/* progress bar */}
@@ -106,6 +109,7 @@ function AudioPlayer(props) {
           onChange={changeRange}
         ></input>
       </div>
+
       <div className="duration">
         {isNaN(duration) ? "00:00" : calculateTime(duration)}
       </div>

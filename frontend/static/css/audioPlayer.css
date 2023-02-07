@@ -167,3 +167,15 @@
 .duration{
   margin-left: 2px
 }
+.cover--art{
+  background-color: #031108;
+  width: 65px;
+  height: 65px;
+}
+.cover--art img{
+  width: 65px;
+  height: 65px;
+}
+.no--progress--bar{
+  display: none;
+}

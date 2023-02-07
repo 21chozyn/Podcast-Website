@@ -10,7 +10,7 @@ import {
 import MenuIcon from "@mui/icons-material/Menu";
 
 const DrawerComp = () => {
-  const pages = ["Podcasts", "Videos", "Team", "About", "Contact"];
+  const pages = ["Home" ,"Podcasts", "Team", "Contact"];
   const [openDrawer, setOpenDrawer] = useState(false);
   return (
     <React.Fragment>

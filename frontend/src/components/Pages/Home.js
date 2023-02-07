@@ -1,6 +1,6 @@
 import HeroSection from "./HeroSection";
 import TikTokHome from "../TikTokHome";
-import PodcastHome from "../PodcastHome";
+import PodcastHome from "./PodcastHome";
 
 import React from 'react'
 

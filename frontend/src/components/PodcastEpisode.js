@@ -34,11 +34,11 @@ function PodcastEpisode(props) {
       <Grid container spacing={1} direction="row">
         <Grid item className="cover-art" xs={3} >
           {isMatch ? (
-            <ButtonBase sx={{ width: 100, height: 100 }} onClick={() => props.callback(props.audio)}>
+            <ButtonBase sx={{ width: 100, height: 100 }} onClick={() => {props.callback1(props.audio); props.callback2(props.imgSrc)}}>
               <Img src={props.imgSrc} />
             </ButtonBase>
           ) : (
-            <ButtonBase sx={{ width: 140, height: 140 }} onClick={() => props.callback(props.audio)}>
+            <ButtonBase sx={{ width: 140, height: 140 }} onClick={() => {props.callback1(props.audio); props.callback2(props.imgSrc)}}>
               <Img src={props.imgSrc} />
             </ButtonBase>
           )}

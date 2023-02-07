@@ -1,7 +1,6 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React, { useState } from "react";
 import Header from "./header";
-import Podcast from "./Pages/Podcast";
+import PodcastHome from "./Pages/PodcastHome";
 import Team from "./Pages/Team";
 import Contact from "./Pages/Contact";
 import Home from "./Pages/Home";
@@ -9,27 +8,33 @@ import Error from "./Pages/Error";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
+import AudioPlayer from "./AudioPlayer";
 
-
-export default class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/team" element={<Team />} />
-          <Route path="/podcast" element={<Podcast />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Error />} />
-        </Routes>
-        <Footer />
-      </Router>
-    );
-  }
+export default function App() {
+ 
+  return (
+    <Router>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+      />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/team" element={<Team />} />
+        <Route
+          path="/podcast"
+          element={
+            <PodcastHome />
+          }
+        />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+      <AudioPlayer />
+      <Footer />
+    </Router>
+  );
 }
 const appDiv = document.getElementById("app");
 const root = createRoot(appDiv);

@@ -52,8 +52,8 @@ const Team = () => {
           </h1>
         </Grid>
         {teamMembers.map((member,index)=>(
-          <Grid item xs={6}>
-          <TeamMember name={member.name} aboutText={member.aboutText} picture={member.pictureThumb}/>
+          <Grid key={index} item xs={6}>
+          <TeamMember key={index} name={member.name} aboutText={member.aboutText} picture={member.pictureThumb}/>
         </Grid>
         ))}
       </Grid>
