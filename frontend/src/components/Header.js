@@ -19,7 +19,6 @@ import DrawerComp from "./DrawerComp";
 import "../../static/css/index.css";
 import LoadingSpinner from "./LoadingSpinner";
 
-
 const Header = () => {
   const navigate = useNavigate();
   const pages = ["Home", "Podcasts", "Team", "Contact us"];
@@ -38,17 +37,17 @@ const Header = () => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
-
-
   const navigateTo = (index) => {
     if (index > 3) {
       window.open(links[index], "_blank", "noreferrer");
       return;
     } else {
-      setIsLoading(true)
-      window.setTimeout(()=>{setIsLoading(false);},1000);
+      setIsLoading(true);
+      window.setTimeout(() => {
+        setIsLoading(false);
+      }, 1000);
       navigate(links[index]);
-    };
+    }
   };
 
   return (
@@ -59,7 +58,7 @@ const Header = () => {
           <Typography>The Rez Issues</Typography>
           {isMatch ? (
             <>
-              <DrawerComp />
+              <DrawerComp drawerClose={navigateTo} />
             </>
           ) : (
             <>

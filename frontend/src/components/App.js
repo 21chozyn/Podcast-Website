@@ -8,7 +8,6 @@ import Error from "./Pages/Error";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { createRoot } from "react-dom/client";
-import AudioPlayer from "./AudioPlayer";
 
 export default function App() {
  
@@ -31,7 +30,6 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Error />} />
       </Routes>
-      <AudioPlayer />
       <Footer />
     </Router>
   );
