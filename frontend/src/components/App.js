@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Header from "./header";
 import PodcastHome from "./Pages/PodcastHome";
+import AudioPlayer from "./AudioPlayer";
 import Team from "./Pages/Team";
 import Contact from "./Pages/Contact";
 import Home from "./Pages/Home";
@@ -30,6 +31,8 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Error />} />
       </Routes>
+      <AudioPlayer />
+
       <Footer />
     </Router>
   );

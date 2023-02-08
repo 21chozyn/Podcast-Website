@@ -32,13 +32,25 @@ function PodcastEpisode(props) {
       }}
     >
       <Grid container spacing={1} direction="row">
-        <Grid item className="cover-art" xs={3} >
+        <Grid item className="cover-art" xs={3}>
           {isMatch ? (
-            <ButtonBase sx={{ width: 100, height: 100 }} onClick={() => {props.callback1(props.audio); props.callback2(props.imgSrc)}}>
+            <ButtonBase
+              sx={{ width: 100, height: 100 }}
+              onClick={() => {
+                window.localStorage.setItem("browserAudioSrc", props.audio);
+                window.localStorage.setItem("browserCoverArt", props.imgSrc)
+              }}
+            >
               <Img src={props.imgSrc} />
             </ButtonBase>
           ) : (
-            <ButtonBase sx={{ width: 140, height: 140 }} onClick={() => {props.callback1(props.audio); props.callback2(props.imgSrc)}}>
+            <ButtonBase
+              sx={{ width: 140, height: 140 }}
+              onClick={() => {
+                window.localStorage.setItem("browserAudioSrc", props.audio);
+                window.localStorage.setItem("browserCoverArt", props.imgSrc)
+              }}
+            >
               <Img src={props.imgSrc} />
             </ButtonBase>
           )}
@@ -63,14 +75,14 @@ function PodcastEpisode(props) {
             </Grid>
             <Grid item className="listen--btn">
               <div onClick={() => props.callback(props.audio)}>
-              <Typography
-              fontSize={11}
-                gutterBottom
-                variant="subtitle2"
-                sx={{ cursor: "pointer" }}
-              >
-                Listen now
-              </Typography>
+                <Typography
+                  fontSize={11}
+                  gutterBottom
+                  variant="subtitle2"
+                  sx={{ cursor: "pointer" }}
+                >
+                  Listen now
+                </Typography>
               </div>
             </Grid>
           </Grid>
@@ -94,18 +106,17 @@ function PodcastEpisode(props) {
             </Grid>
             <Grid item className="listen--btn">
               <div onClick={() => props.callback(props.audio)}>
-              <Typography
-                gutterBottom
-                variant="subtitle2"
-                sx={{ cursor: "pointer" }}
-              >
-                Listen now
-              </Typography>
+                <Typography
+                  gutterBottom
+                  variant="subtitle2"
+                  sx={{ cursor: "pointer" }}
+                >
+                  Listen now
+                </Typography>
               </div>
             </Grid>
           </Grid>
         )}
-        
       </Grid>
     </Paper>
   );

@@ -83,7 +83,6 @@ const PodcastHome = () => {
       </Stack>
       <br />
       <br />
-      <AudioPlayer audioSrc={audioSrc} coverArt={coverArt} />
 
       <br />
     </div>

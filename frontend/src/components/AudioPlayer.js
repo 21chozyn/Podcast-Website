@@ -6,13 +6,25 @@ import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
 import "../../static/css/audioPlayer.css";
 
 function AudioPlayer(props) {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [audioSrc,setAudioSrc] = useState("../../static/audio/audio1.mp3");
+  const [coverArt,setCoverArt] = useState("../../static/images/defaultCover.jpg");
 
   const audioPlayer = useRef(); //reference audio component
   const progressBar = useRef(); //reference to progress bar
   const animationRef = useRef(); //reference the animation
+
+  useEffect(()=>{
+    if (window.localStorage.getItem("browserCoverArt") === null){
+      setAudioSrc("../../static/audio/audio1.mp3");
+      setCoverArt("../../static/images/defaultCover.jpg");
+
+    }
+    setAudioSrc(window.localStorage.getItem("browserAudioSrc"));
+    setCoverArt(window.localStorage.getItem("browserCoverArt"));
+  },[window.localStorage.getItem("browserAudioSrc")])
 
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration); //this is to change the float values to integers
@@ -74,12 +86,13 @@ function AudioPlayer(props) {
     <div className="audio--player">
       <audio
         ref={audioPlayer}
-        src={props.audioSrc}
-        preload="metadata"
+        src={audioSrc}
+        preload="auto"
         autoPlay
+        loop
       ></audio>
       <div className="cover--art">
-        <img src={props.coverArt} />
+        <img src={coverArt} />
       </div>
       <button className="forward--backward" onClick={backThirty}>
         <ArrowBackIosNewIcon />
