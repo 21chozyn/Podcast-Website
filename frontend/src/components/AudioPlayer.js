@@ -3,28 +3,35 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
+import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import "../../static/css/audioPlayer.css";
 
 function AudioPlayer(props) {
   const [isPlaying, setIsPlaying] = useState(true);
+  const [selfRender, setSelfRender] = useState(false)
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  const [audioSrc,setAudioSrc] = useState("../../static/audio/audio1.mp3");
-  const [coverArt,setCoverArt] = useState("../../static/images/defaultCover.jpg");
+  const [audioSrc, setAudioSrc] = useState("../../static/audio/audio1.mp3");
+  const [coverArt, setCoverArt] = useState(
+    "../../static/images/defaultCover.jpg"
+  );
+  const [isMuted, setIsMute] = useState(false);
 
   const audioPlayer = useRef(); //reference audio component
   const progressBar = useRef(); //reference to progress bar
   const animationRef = useRef(); //reference the animation
+  const volumeBar = useRef();
 
-  useEffect(()=>{
-    if (window.localStorage.getItem("browserCoverArt") === null){
+  useEffect(() => {
+    if (window.localStorage.getItem("browserCoverArt") === null) {
       setAudioSrc("../../static/audio/audio1.mp3");
       setCoverArt("../../static/images/defaultCover.jpg");
-
     }
     setAudioSrc(window.localStorage.getItem("browserAudioSrc"));
     setCoverArt(window.localStorage.getItem("browserCoverArt"));
-  },[window.localStorage.getItem("browserAudioSrc")])
+  }, [window.localStorage.getItem("browserAudioSrc")]);
+
 
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration); //this is to change the float values to integers
@@ -94,6 +101,25 @@ function AudioPlayer(props) {
       <div className="cover--art">
         <img src={coverArt} />
       </div>
+      <div className="volume--control">
+        {isMuted ? (
+          <button className="muted">
+            <VolumeOffIcon />
+          </button>
+        ) : (
+          <button className="not muted">
+            <VolumeUpIcon />
+          </button>
+        )}
+        <div className="volume--bar--wrapper">
+          <input
+            type="range"
+            className="volume--bar"
+            defaultValue="50"
+            ref={volumeBar}
+          ></input>
+        </div>
+      </div>
       <button className="forward--backward" onClick={backThirty}>
         <ArrowBackIosNewIcon />
         <p>30s</p>
@@ -109,23 +135,29 @@ function AudioPlayer(props) {
         <p>30s</p>
         <ArrowForwardIosIcon />
       </button>
-      {/* props.inpage is to render components that should not be rendered in the header */}
-      <div className="current--time"> {calculateTime(currentTime)}</div>
+      {/* props.inheader is to render components that should be rendered in the header only*/}
+      
+        <>
+          <div className="current--time"> {calculateTime(currentTime)}</div>
 
-      {/* progress bar */}
-      <div className="progress--bar--wrapper">
-        <input
-          type="range"
-          className="progress--bar"
-          defaultValue="0"
-          ref={progressBar}
-          onChange={changeRange}
-        ></input>
-      </div>
+          {/* progress bar */}
+          <div className="progress--bar--wrapper">
+            <input
+              type="range"
+              className="progress--bar"
+              defaultValue="0"
+              ref={progressBar}
+              onChange={changeRange}
+            ></input>
+          </div>
 
-      <div className="duration">
-        {isNaN(duration) ? "00:00" : calculateTime(duration)}
-      </div>
+          <div className="duration">
+            {isNaN(duration) ? "00:00" : calculateTime(duration)}
+          </div>
+        </>
+      
+
+      <br />
     </div>
   );
 }

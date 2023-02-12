@@ -18,6 +18,8 @@ import { FaTiktok } from "react-icons/fa";
 import DrawerComp from "./DrawerComp";
 import "../../static/css/index.css";
 import LoadingSpinner from "./LoadingSpinner";
+import AudioPlayer from "./AudioPlayer";
+import Player from "./Player";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -51,68 +53,77 @@ const Header = () => {
   };
 
   return (
-    <div className="Header">
-      <LoadingSpinner isLoading={isLoading} />
-      <AppBar sx={{ background: "#2f4f4f" }}>
-        <Toolbar>
-          <Typography>The Rez Issues</Typography>
-          {isMatch ? (
-            <>
-              <DrawerComp drawerClose={navigateTo} />
-            </>
-          ) : (
-            <>
-              <Tabs
-                textColor="inherit"
-                value={value}
-                onChange={(e, value) => setValue(value)}
-                indicatorColor="secondary"
-              >
-                {pages.map((page, index) => (
-                  <Tab
-                    key={index}
-                    label={page}
-                    onClick={() => navigateTo(index)}
-                  ></Tab>
-                ))}
-              </Tabs>
-              <IconButton
-                sx={{ marginLeft: "auto" }}
-                size="large"
-                color="inherit"
-                onClick={() => navigateTo(4)}
-              >
-                <TwitterIcon />
-              </IconButton>
-              <IconButton
-                sx={{ marginLeft: "3px" }}
-                size="large"
-                color="inherit"
-                onClick={() => navigateTo(5)}
-              >
-                <FacebookIcon />
-              </IconButton>
-              <IconButton
-                sx={{ marginLeft: "6px" }}
-                size="large"
-                color="inherit"
-                onClick={() => navigateTo(6)}
-              >
-                <YouTubeIcon />
-              </IconButton>
-              <IconButton
-                sx={{ marginLeft: "6px" }}
-                size="large"
-                color="inherit"
-                onClick={() => navigateTo(7)}
-              >
-                <FaTiktok />
-              </IconButton>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
-    </div>
+    <>
+      <div className="Header">
+        <LoadingSpinner isLoading={isLoading} />
+        <AppBar sx={{ background: "#2f4f4f" }}>
+          <Toolbar>
+            {isMatch ? (
+              <>
+                {/* <AudioPlayer inHeader={true} /> */}
+                <Typography>The Rez Issues</Typography>
+                <DrawerComp drawerClose={navigateTo} />
+              </>
+            ) : (
+              <>
+                <Tabs
+                  textColor="inherit"
+                  value={value}
+                  onChange={(e, value) => setValue(value)}
+                  indicatorColor="secondary"
+                >
+                  {pages.map((page, index) => (
+                    <Tab
+                      key={index}
+                      label={page}
+                      onClick={() => navigateTo(index)}
+                    ></Tab>
+                  ))}
+                </Tabs>
+                <IconButton
+                  sx={{ marginLeft: "auto" }}
+                  size="large"
+                  color="inherit"
+                  onClick={() => navigateTo(4)}
+                >
+                  <TwitterIcon />
+                </IconButton>
+                <IconButton
+                  sx={{ marginLeft: "3px" }}
+                  size="large"
+                  color="inherit"
+                  onClick={() => navigateTo(5)}
+                >
+                  <FacebookIcon />
+                </IconButton>
+                <IconButton
+                  sx={{ marginLeft: "6px" }}
+                  size="large"
+                  color="inherit"
+                  onClick={() => navigateTo(6)}
+                >
+                  <YouTubeIcon />
+                </IconButton>
+                <IconButton
+                  sx={{ marginLeft: "6px" }}
+                  size="large"
+                  color="inherit"
+                  onClick={() => navigateTo(7)}
+                >
+                  <FaTiktok />
+                </IconButton>
+              </>
+            )}
+          </Toolbar>
+        </AppBar>
+      </div>
+     
+      
+        {/* <Player /> */}
+        {/* <AudioPlayer inHeader={false}/> */}
+   
+      
+    </>
   );
 };
 

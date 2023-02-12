@@ -38,7 +38,7 @@ function PodcastEpisode(props) {
               sx={{ width: 100, height: 100 }}
               onClick={() => {
                 window.localStorage.setItem("browserAudioSrc", props.audio);
-                window.localStorage.setItem("browserCoverArt", props.imgSrc)
+                window.localStorage.setItem("browserCoverArt", props.imgSrc);
               }}
             >
               <Img src={props.imgSrc} />
@@ -48,7 +48,7 @@ function PodcastEpisode(props) {
               sx={{ width: 140, height: 140 }}
               onClick={() => {
                 window.localStorage.setItem("browserAudioSrc", props.audio);
-                window.localStorage.setItem("browserCoverArt", props.imgSrc)
+                window.localStorage.setItem("browserCoverArt", props.imgSrc);
               }}
             >
               <Img src={props.imgSrc} />

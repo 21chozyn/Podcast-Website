@@ -3,9 +3,9 @@ import { Stack, Divider, Typography, Button } from "@mui/material";
 import "../../../static/css/home.css";
 import PodcastEpisode from "../PodcastEpisode";
 import PodcastNavBar from "../PodcastNavBar";
-import AudioPlayer from "../AudioPlayer";
 
-const PodcastHome = () => {
+function PodcastHome () {
+
   
   const initialPodcastEpisodes = [
     {
@@ -34,11 +34,11 @@ const PodcastHome = () => {
     },
   ];
 
+
   const [podcastEpisodes, setPodcastEpisodes] = useState(
     initialPodcastEpisodes
   );
-  const [audioSrc, setAudioSrc] = useState("");
-  const [coverArt, setCoverArt] = useState("../../../static/images/defaultCover.jpg");
+ 
   useEffect(() => {
     fetch(`/api/podcast`)
       .then((response) => response.json())
@@ -75,15 +75,11 @@ const PodcastHome = () => {
               infoText={podcastEpisode.description}
               imgSrc={podcastEpisode.coverArt}
               audio={podcastEpisode.audio}
-              callback1={setAudioSrc}
-              callback2={setCoverArt}
             />
           </>
         ))}
       </Stack>
-      <br />
-      <br />
-
+      
       <br />
     </div>
   );
