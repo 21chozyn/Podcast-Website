@@ -1,0 +1,18 @@
+.audio--player{
+    --primary : #2f4f4f;
+    display: flex;
+    width: 700px;
+}
+.forward--backward{
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    font-family: monospace;
+    font-size: 15px;
+    cursor: pointer;
+}
+.forward--backward :hover{
+    color: var(--primary)
+
+}

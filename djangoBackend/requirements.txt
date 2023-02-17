@@ -1,0 +1,4 @@
+python
+django-4.1.6
+django_rest_framework
+pillow

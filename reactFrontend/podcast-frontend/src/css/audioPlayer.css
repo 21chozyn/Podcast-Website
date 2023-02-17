@@ -1,0 +1,217 @@
+.audio--player {
+  --primary: #8c1f85;
+  --secondary: #2f4f4f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  width: fit-content;
+}
+.forward--backward {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  font-family: monospace;
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--secondary);
+}
+.forward--backward :hover {
+  color: var(--primary);
+}
+.play--pause {
+  background: transparent;
+  border: none;
+  border-radius: 50%;
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  font-size: 32px;
+  color: var(--secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.play--pause:hover {
+  color: var(--primary);
+}
+.current--time,
+.duration {
+  font-family: monospace;
+  font-size: 16px;
+}
+
+.progress--bar,
+.volume--bar {
+  --bar-bg: #ffe3df;
+  --seek-before-width: 0px;
+  --seek-before-color: #031108;
+  --knobby: #2f4f4f;
+  --selectedKnobby: #ff00ee;
+
+  appearance: none;
+  background: var(--bar-bg);
+  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 11px;
+  outline: none;
+  cursor: pointer;
+}
+/* progress bar for safari */
+.progress--bar::-webkit-slider-runnable-track,
+.progress--bar::-webkit-slider-runnable-track {
+  background: var(--bar-bg);
+  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 11px;
+  outline: none;
+}
+
+/* progress bar for firefox */
+.progress--bar::-moz-range-track,
+.progress--bar::-moz-range-track {
+  background: var(--bar-bg);
+  border-radius: 10px;
+  position: relative;
+  width: 100%;
+  height: 11px;
+  outline: none;
+}
+.progress--bar::-moz-focus-outer,
+.progress--bar::-moz-focus-outer {
+  border: 0;
+}
+
+/* progress bar for chrome and safari */
+.progress--bar::before,
+.progress--bar::before {
+  content: "";
+  height: 11px;
+  width: var(--seek-before-width);
+  background-color: var(--seek-before-color);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+}
+/* progress bar for firefox */
+.progress--bar::-moz-range-progress,
+.progress--bar::-moz-range-progress {
+  background-color: var(--seek-before-color);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height: 11px;
+}
+/* knob for chrom and safari */
+.progress--bar::-webkit-slider-thumb,
+.progress--bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--knobby);
+  cursor: pointer;
+  position: relative;
+  margin: -2px 0 0 0;
+  z-index: 3;
+  box-sizing: border-box;
+}
+/* knob while dragging for chrom and safari */
+.progress--bar:active::-webkit-slider-thumb,
+.progress--bar:active::-webkit-slider-thumb {
+  transform: scale(1.2);
+  background: var(--selectedKnobby);
+}
+/* knob for firefox */
+.progress--bar::-moz-range-thumb,
+.progress--bar::-moz-range-thumb {
+  height: 15px;
+  border-radius: 50%;
+  border: transparent;
+  background-color: var(--knobby);
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+  box-sizing: border-box;
+}
+
+/* knob while draging */
+.progress--bar:active:-moz-range-thumb,
+.progress--bar:active:-moz-range-thumb {
+  transform: scale(1.2);
+  background: var(--selectedKnobby);
+}
+.progress--bar--wrapper,
+.progress--bar--wrapper {
+  width: 200px;
+  position: relative;
+}
+.volume--bar--wrapper {
+  transform: rotate(90deg);
+    position: relative;
+    width: 65px;
+    top: -20px;
+    display: block;
+    padding: 0;
+    margin: 0;
+    left: 15px;
+
+}
+.volume--bar {
+  position: fixed;
+    width: 65px;
+    height: fit-content;
+    padding: 0;
+    margin: 0;
+}
+.volume--control {
+  display: flex;
+  width: 70px;
+  padding: 15px 5px;
+  justify-content: flex-end;
+  justify-items: flex-end;
+  align-items: center;
+  position: relative;
+  left: 5px;
+}
+.chapter {
+  --left: 45%;
+  --width: 20%;
+  display: block;
+  height: 10px;
+  background-color: brown;
+  position: absolute;
+  top: 4px;
+  left: var(--left);
+  width: var(--width);
+  cursor: pointer;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: 10px;
+}
+.chapter.start {
+  border-radius: 10px;
+}
+.duration {
+  margin-left: 2px;
+}
+.cover--art {
+  background-color: #031108;
+  width: 65px;
+  height: 65px;
+}
+.cover--art img {
+  width: 65px;
+  height: 65px;
+}
+.no--progress--bar {
+  display: none;
+}
