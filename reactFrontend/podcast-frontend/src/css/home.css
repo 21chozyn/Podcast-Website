@@ -52,7 +52,7 @@
 }
 #nav--search{
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 #podcast--search--btn{

@@ -65,21 +65,22 @@ function PodcastHome() {
     setFetchLink(
       `http://127.0.0.1:8000/api/podcast/?limit=${podcastsPerPage}&offset=${
         (value - 1) * podcastsPerPage
-      }&search=${searchInput.current.value}&ordering=${orderingInput.current.value}`
+      }&search=${searchInput.current.value}&ordering=${
+        orderingInput.current.value
+      }`
     );
     setPage(value);
-  }; 
+  };
   const handleSearch = () => {
     setFetchLink(
       `http://127.0.0.1:8000/api/podcast/?limit=${podcastsPerPage}&offset=0&search=${searchInput.current.value}&ordering=${orderingInput.current.value}`
     );
   };
-  const handleOrdering = (event, value) => {
-    console.log(orderingInput.current.value);
-    console.log(value.props.value);
-    setFetchLink(
-      `http://127.0.0.1:8000/api/podcast/?limit=${podcastsPerPage}&offset=0&search=${searchInput.current.value}&ordering=${value.props.value}}`
-    );
+  const handleKeypress = (e) => {
+    //it triggers by pressing the enter key
+    if (e.keyCode === 13) {
+      handleSearch();
+    }
   };
   const [podcastEpisodes, setPodcastEpisodes] = useState(
     initialPodcastEpisodes
@@ -105,20 +106,15 @@ function PodcastHome() {
   return (
     <div className="podcast--home" id="podcastSection">
       <div id="nav--search">
-        <div class="filler" style={{ width: "180px" }}></div>
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <TextField
-            id="standard-search"
-            label="Search podcasts"
-            type="search"
-            variant="outlined"
-            inputRef={searchInput}
-            color="secondary"
-          />
-          <div id="podcast--search--btn" onClick={handleSearch}>
-            <SearchIcon />
-          </div>
-        </div>
+        <TextField
+          id="standard-search"
+          label="Search podcasts"
+          type="search"
+          variant="outlined"
+          inputRef={searchInput}
+          color="secondary"
+          onKeyDown={handleKeypress}
+        />
         <TextField
           id="outlined-select-orderBy"
           select
@@ -127,7 +123,7 @@ function PodcastHome() {
           sx={{ width: "150px" }}
           color="secondary"
           inputRef={orderingInput}
-          onChange={handleOrdering}
+          onKeyDown={handleKeypress}
         >
           {sortMethods.map((option) => (
             <MenuItem key={option.value} value={option.value}>
@@ -135,6 +131,12 @@ function PodcastHome() {
             </MenuItem>
           ))}
         </TextField>
+        <div
+          id="podcast--search--btn"
+          onClick={handleSearch}
+        >
+          <SearchIcon />
+        </div>
       </div>
       <br />
       <br />
