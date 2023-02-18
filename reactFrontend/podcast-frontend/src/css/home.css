@@ -50,3 +50,19 @@
 .listen--btn{
   max-width: 60px;
 }
+#nav--search{
+  display: flex;
+  justify-content: space-around;
+}
+
+#podcast--search--btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  
+}
+#podcast--search--btn :hover{
+  cursor: pointer;
+}
+

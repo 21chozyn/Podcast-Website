@@ -1,8 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { Stack, Divider, Typography ,Pagination } from "@mui/material";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  Stack,
+  Divider,
+  Typography,
+  Pagination,
+  TextField,
+  MenuItem,
+} from "@mui/material";
 import "../css/home.css";
 import PodcastEpisode from "./PodcastEpisode";
-import PodcastNavBar from "./PodcastNavBar";
+import SearchIcon from "@mui/icons-material/Search";
 
 function PodcastHome() {
   const initialPodcastEpisodes = [
@@ -31,27 +38,55 @@ function PodcastHome() {
       Host: "Travis Mawere",
     },
   ];
+  const sortMethods = [
+    {
+      value: "createdAt",
+      label: "Recently Added",
+    },
+    {
+      value: "-createdAt",
+      label: "Oldest Podcasts",
+    },
+  ];
+
   const initialApiData = {
     count: 3,
     next: "http://127.0.0.1:8000/api/podcast/?limit=2&offset=2",
     previous: null,
   };
-  const podcastsPerPage = 2
+  const podcastsPerPage = 2;
   const [page, setPage] = React.useState(1);
-  const [fetchLink, setFetchLink] = useState("http://127.0.0.1:8000/api/podcast/")
-  const handleChange = (event, value) => {
-    setFetchLink(`http://127.0.0.1:8000/api/podcast/?limit=${podcastsPerPage}&offset=${(value-1)*podcastsPerPage}`)
-
-    
+  const [fetchLink, setFetchLink] = useState(
+    "http://127.0.0.1:8000/api/podcast/"
+  );
+  const searchInput = useRef();
+  const orderingInput = useRef();
+  const handlePagination = (event, value) => {
+    setFetchLink(
+      `http://127.0.0.1:8000/api/podcast/?limit=${podcastsPerPage}&offset=${
+        (value - 1) * podcastsPerPage
+      }&search=${searchInput.current.value}&ordering=${orderingInput.current.value}`
+    );
     setPage(value);
+  }; 
+  const handleSearch = () => {
+    setFetchLink(
+      `http://127.0.0.1:8000/api/podcast/?limit=${podcastsPerPage}&offset=0&search=${searchInput.current.value}&ordering=${orderingInput.current.value}`
+    );
+  };
+  const handleOrdering = (event, value) => {
+    console.log(orderingInput.current.value);
+    console.log(value.props.value);
+    setFetchLink(
+      `http://127.0.0.1:8000/api/podcast/?limit=${podcastsPerPage}&offset=0&search=${searchInput.current.value}&ordering=${value.props.value}}`
+    );
   };
   const [podcastEpisodes, setPodcastEpisodes] = useState(
     initialPodcastEpisodes
   );
   const [apiData, setApiData] = useState(initialApiData);
-
-
   useEffect(() => {
+    console.log(fetchLink);
     fetch(fetchLink)
       .then((response) => response.json())
       .then((usefulData) => {
@@ -69,7 +104,38 @@ function PodcastHome() {
 
   return (
     <div className="podcast--home" id="podcastSection">
-      <PodcastNavBar />
+      <div id="nav--search">
+        <div class="filler" style={{ width: "180px" }}></div>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <TextField
+            id="standard-search"
+            label="Search podcasts"
+            type="search"
+            variant="outlined"
+            inputRef={searchInput}
+            color="secondary"
+          />
+          <div id="podcast--search--btn" onClick={handleSearch}>
+            <SearchIcon />
+          </div>
+        </div>
+        <TextField
+          id="outlined-select-orderBy"
+          select
+          label="Order By"
+          defaultValue="createdAt"
+          sx={{ width: "150px" }}
+          color="secondary"
+          inputRef={orderingInput}
+          onChange={handleOrdering}
+        >
+          {sortMethods.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
+      </div>
       <br />
       <br />
 
@@ -80,9 +146,8 @@ function PodcastHome() {
         justifyContent="center"
         alignItems="center"
       >
-        {console.log(apiData)}
-        <Typography variant="h4" align="left" sx={{ width: 900 }}>
-        Page: {page}
+        <Typography variant="h4" align="center" sx={{ width: 900 }}>
+          Page: {page}
         </Typography>
         {podcastEpisodes.map((podcastEpisode, index) => (
           <>
@@ -96,7 +161,12 @@ function PodcastHome() {
             />
           </>
         ))}
-        <Pagination count={Math.ceil(apiData.count/podcastsPerPage)} page={page} onChange={handleChange} />
+        <Pagination
+          count={Math.ceil(apiData.count / podcastsPerPage)}
+          page={page}
+          onChange={handlePagination}
+          color="secondary"
+        />
       </Stack>
 
       <br />
