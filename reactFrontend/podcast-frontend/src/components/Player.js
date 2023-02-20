@@ -56,7 +56,7 @@ export default function Player() {
     setAudioSrc(window.localStorage.getItem("browserAudioSrc"));
     setCoverArt(window.localStorage.getItem("browserCoverArt"));
   }, [window.localStorage.getItem("browserAudioSrc")]);
-  
+
   useEffect(() => {
     if (audioPlayer) {
       audioPlayer.current.volume = volume / 100;

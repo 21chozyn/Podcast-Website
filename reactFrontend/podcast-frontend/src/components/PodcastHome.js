@@ -54,7 +54,7 @@ function PodcastHome() {
     next: "http://127.0.0.1:8000/api/podcast/?limit=2&offset=2",
     previous: null,
   };
-  const podcastsPerPage = 2;
+  const podcastsPerPage = 5;
   const [page, setPage] = React.useState(1);
   const [fetchLink, setFetchLink] = useState(
     "http://127.0.0.1:8000/api/podcast/"
@@ -77,7 +77,6 @@ function PodcastHome() {
     );
   };
   const handleKeypress = (e) => {
-    //it triggers by pressing the enter key
     if (e.keyCode === 13) {
       handleSearch();
     }
