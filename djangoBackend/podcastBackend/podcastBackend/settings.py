@@ -21,12 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-iu(k1b!1qu(6r)%)_&#i@5e@2(id*#mw4ul&2^7hn)!lj26tk@"
+# SECRET_KEY = "django-insecure-iu(k1b!1qu(6r)%)_&#i@5e@2(id*#mw4ul&2^7hn)!lj26tk@"
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', "django-insecure-iu(k1b!1qu(6r)%)_&#i@5e@2(id*#mw4ul&2^7hn)!lj26tk@")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["54.89.27.89"]
 
 
 # Application definition
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "django_filters",
     "api.apps.ApiConfig",
     "corsheaders",
 
@@ -77,7 +80,10 @@ WSGI_APPLICATION = "podcastBackend.wsgi.application"
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 2
+    'PAGE_SIZE': 5,
+
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
+
 }
 
 # Database
