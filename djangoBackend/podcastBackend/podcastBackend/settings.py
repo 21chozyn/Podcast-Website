@@ -16,6 +16,10 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#get the overall base directory path
+REAL_BASE_DIR = Path(__file__).resolve().parent.parent.parent.parent
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -26,7 +30,7 @@ SECRET_KEY = "django-insecure-iu(k1b!1qu(6r)%)_&#i@5e@2(id*#mw4ul&2^7hn)!lj26tk@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["100.25.163.230"]
 
 
 # Application definition
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "api.apps.ApiConfig",
     "corsheaders",
+    "core.apps.CoreConfig"
 
 ]
 
@@ -60,7 +65,7 @@ ROOT_URLCONF = "podcastBackend.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [os.path.join(REAL_BASE_DIR, 'reactFrontend/podcast-frontend', 'build')],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -77,7 +82,7 @@ WSGI_APPLICATION = "podcastBackend.wsgi.application"
 
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    'PAGE_SIZE': 2
+    'PAGE_SIZE': 5
 }
 
 # Database
@@ -126,6 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [os.path.join(REAL_BASE_DIR, 'reactFrontend/podcast-frontend', 'build', 'static')]
+
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
