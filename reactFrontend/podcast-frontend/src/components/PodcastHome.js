@@ -151,16 +151,16 @@ function PodcastHome() {
           Page: {page}
         </Typography>
         {podcastEpisodes.map((podcastEpisode, index) => (
-          <>
+          
             <PodcastEpisode
-              key={podcastEpisode.id}
+              key={index}
               className="podcast"
               title={podcastEpisode.title}
               infoText={podcastEpisode.description}
               imgSrc={podcastEpisode.coverArt}
               audio={podcastEpisode.audio}
             />
-          </>
+          
         ))}
         <Pagination
           count={Math.ceil(apiData.count / podcastsPerPage)}

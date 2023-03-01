@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   AppBar,
@@ -13,17 +13,16 @@ import {
 import FacebookIcon from "@mui/icons-material/Facebook";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import DrawerComp from "./DrawerComp";
 import "../css/index.css";
 import LoadingSpinner from "./LoadingSpinner";
 
 const Header = () => {
   const navigate = useNavigate();
-  const pages = ["Home", "Podcasts", "Team", "Contact us"];
+  const pages = ["Home", "Team", "Contact us"];
   const links = [
     "/",
-    "/podcast",
     "/team",
     "/contact",
     "https://twitter.com/Voice_Of_Peter?s=09",
@@ -33,11 +32,33 @@ const Header = () => {
   ];
   const [value, setValue] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [headerColor, setHeaderColor] = useState({
+    color: "transparent",
+    fontColor: "white",
+  });
+  const [onHome, setOnHome] = useState(true);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
+  useEffect(() => {
+    window.onscroll = () =>
+    window.pageYOffset === 0 && onHome
+        ? setHeaderColor({ color: "transparent", fontColor: "white" })
+        : setHeaderColor({ color: "white", fontColor: "black" });
+
+    return () => (window.onscroll = null);
+  });
+
   const navigateTo = (index) => {
-    if (index > 3) {
+    if (index === 0) {
+      setOnHome(true);
+      setHeaderColor({ color: "transparent", fontColor: "white" });
+    } else {
+      setOnHome(false);
+      setHeaderColor({ color: "white", fontColor: "black" });
+    }
+
+    if (index > 2) {
       window.open(links[index], "_blank", "noreferrer");
       return;
     } else {
@@ -53,7 +74,12 @@ const Header = () => {
     <>
       <div className="Header">
         <LoadingSpinner isLoading={isLoading} />
-        <AppBar sx={{ background: "#2f4f4f" }}>
+        <AppBar
+          sx={{
+            backgroundColor: headerColor.color,
+            color: headerColor.fontColor,
+          }}
+        >
           <Toolbar>
             {isMatch ? (
               <>
@@ -83,7 +109,7 @@ const Header = () => {
                   color="inherit"
                   onClick={() => navigateTo(4)}
                 >
-                  <TwitterIcon />
+                  <TwitterIcon sx={{ color: "rgb(29 161 242)" }} />
                 </IconButton>
                 <IconButton
                   sx={{ marginLeft: "3px" }}
@@ -91,7 +117,7 @@ const Header = () => {
                   color="inherit"
                   onClick={() => navigateTo(5)}
                 >
-                  <FacebookIcon />
+                  <FacebookIcon sx={{ color: "rgb(66 103 178)" }} />
                 </IconButton>
                 <IconButton
                   sx={{ marginLeft: "6px" }}
@@ -99,7 +125,7 @@ const Header = () => {
                   color="inherit"
                   onClick={() => navigateTo(6)}
                 >
-                  <YouTubeIcon />
+                  <YouTubeIcon sx={{ color: "red" }} />
                 </IconButton>
                 <IconButton
                   sx={{ marginLeft: "6px" }}
@@ -114,12 +140,9 @@ const Header = () => {
           </Toolbar>
         </AppBar>
       </div>
-     
-      
-        {/* <Player /> */}
-        {/* <AudioPlayer inHeader={false}/> */}
-   
-      
+
+      {/* <Player /> */}
+      {/* <AudioPlayer inHeader={false}/> */}
     </>
   );
 };
