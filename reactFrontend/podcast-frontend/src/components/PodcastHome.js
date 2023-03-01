@@ -57,13 +57,13 @@ function PodcastHome() {
   const podcastsPerPage = 5;
   const [page, setPage] = React.useState(1);
   const [fetchLink, setFetchLink] = useState(
-    "http://127.0.0.1:8000/api/podcast/"
+    "http://100.25.163.230:8000/api/podcast/"
   );
   const searchInput = useRef();
   const orderingInput = useRef();
   const handlePagination = (event, value) => {
     setFetchLink(
-      `http://127.0.0.1:8000/api/podcast/?limit=${podcastsPerPage}&offset=${
+      `http://100.25.163.230:8000/api/podcast/?limit=${podcastsPerPage}&offset=${
         (value - 1) * podcastsPerPage
       }&search=${searchInput.current.value}&ordering=${
         orderingInput.current.value
@@ -73,7 +73,7 @@ function PodcastHome() {
   };
   const handleSearch = () => {
     setFetchLink(
-      `http://127.0.0.1:8000/api/podcast/?limit=${podcastsPerPage}&offset=0&search=${searchInput.current.value}&ordering=${orderingInput.current.value}`
+      `http://100.25.163.230:8000/api/podcast/?limit=${podcastsPerPage}&offset=0&search=${searchInput.current.value}&ordering=${orderingInput.current.value}`
     );
   };
   const handleKeypress = (e) => {
