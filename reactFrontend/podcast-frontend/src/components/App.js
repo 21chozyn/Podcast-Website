@@ -21,7 +21,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/team" element={<TeamPage />} />
-        {/* <Route path="/podcast" element={<PodcastHome />} /> */}
+        <Route path="/podcast" element={<PodcastHome />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<Error />} />
       </Routes>
@@ -32,7 +32,7 @@ export default function App() {
       <br />
       <br />
 
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }

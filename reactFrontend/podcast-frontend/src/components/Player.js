@@ -11,6 +11,7 @@ import PauseIcon from "@mui/icons-material/Pause";
 import FastRewindIcon from "@mui/icons-material/FastRewind";
 import FastForwardIcon from "@mui/icons-material/FastForward";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import "../images/defaultCover.jpg"
 
 // #region -------- Styled Components -----------------------------------------
 const CustomPaper = styled(Paper)(({ theme }) => ({
@@ -45,13 +46,13 @@ export default function Player() {
   const [duration, setDuration] = useState(0);
   const [audioSrc, setAudioSrc] = useState("../../static/audio/audio1.mp3");
   const [coverArt, setCoverArt] = useState(
-    "../../static/images/defaultCover.jpg"
+    "../images/defaultCover.jpg"
   );
   
   useEffect(() => {
     if (window.localStorage.getItem("browserCoverArt") === null) {
       setAudioSrc("../../static/audio/audio1.mp3");
-      setCoverArt("../../static/images/defaultCover.jpg");
+      setCoverArt("../images/defaultCover.jpg");
     }
     setAudioSrc(window.localStorage.getItem("browserAudioSrc"));
     setCoverArt(window.localStorage.getItem("browserCoverArt"));

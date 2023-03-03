@@ -36,27 +36,19 @@ const Header = () => {
     color: "transparent",
     fontColor: "white",
   });
-  const [onHome, setOnHome] = useState(true);
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
 
   useEffect(() => {
     window.onscroll = () =>
-    window.pageYOffset === 0 && onHome
+    window.pageYOffset === 0 && window.location.pathname === "/"
         ? setHeaderColor({ color: "transparent", fontColor: "white" })
         : setHeaderColor({ color: "white", fontColor: "black" });
-
     return () => (window.onscroll = null);
   });
 
   const navigateTo = (index) => {
-    if (index === 0) {
-      setOnHome(true);
-      setHeaderColor({ color: "transparent", fontColor: "white" });
-    } else {
-      setOnHome(false);
-      setHeaderColor({ color: "white", fontColor: "black" });
-    }
+
 
     if (index > 2) {
       window.open(links[index], "_blank", "noreferrer");

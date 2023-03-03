@@ -86,7 +86,6 @@ function PodcastHome() {
   );
   const [apiData, setApiData] = useState(initialApiData);
   useEffect(() => {
-    console.log(fetchLink);
     fetch(fetchLink)
       .then((response) => response.json())
       .then((usefulData) => {
@@ -104,6 +103,9 @@ function PodcastHome() {
 
   return (
     <div className="podcast--home" id="podcastSection">
+      <br />
+      <br />
+      <br />
       <div id="nav--search">
         <TextField
           id="standard-search"
@@ -130,10 +132,7 @@ function PodcastHome() {
             </MenuItem>
           ))}
         </TextField>
-        <div
-          id="podcast--search--btn"
-          onClick={handleSearch}
-        >
+        <div id="podcast--search--btn" onClick={handleSearch}>
           <SearchIcon />
         </div>
       </div>
@@ -151,16 +150,14 @@ function PodcastHome() {
           Page: {page}
         </Typography>
         {podcastEpisodes.map((podcastEpisode, index) => (
-          
-            <PodcastEpisode
-              key={index}
-              className="podcast"
-              title={podcastEpisode.title}
-              infoText={podcastEpisode.description}
-              imgSrc={podcastEpisode.coverArt}
-              audio={podcastEpisode.audio}
-            />
-          
+          <PodcastEpisode
+            key={index}
+            className="podcast"
+            title={podcastEpisode.title}
+            infoText={podcastEpisode.description}
+            imgSrc={podcastEpisode.coverArt}
+            audio={podcastEpisode.audio}
+          />
         ))}
         <Pagination
           count={Math.ceil(apiData.count / podcastsPerPage)}
