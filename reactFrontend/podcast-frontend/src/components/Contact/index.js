@@ -44,12 +44,10 @@ const Contact = () => {
               letterClass={letterClass}
             />
           </h1>
-          <p>
-            If you're looking for a developer who is committed to producing
-            top-notch code and who brings a diverse range of interests and
-            skills to the table, look no further. I am excited to collaborate
-            with you on your next project and to bring my expertise and
-            enthusiasm to the table.
+          <p className="contact-text">
+            Whether its for featuring in our Podcasts, advertising opportunities
+            or you have a hot story you want to talk about, we can always chat
+            about it over a cup of coffee! 
           </p>
           <div className="contact-form">
             <form>

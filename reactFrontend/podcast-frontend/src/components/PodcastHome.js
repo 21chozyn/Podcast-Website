@@ -7,7 +7,7 @@ import {
   TextField,
   MenuItem,
 } from "@mui/material";
-import "../css/home.css";
+import "../css/home.scss";
 import PodcastEpisode from "./PodcastEpisode";
 import SearchIcon from "@mui/icons-material/Search";
 import vinyl from "../assets/images/coverArt1.jpg";

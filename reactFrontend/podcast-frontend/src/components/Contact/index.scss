@@ -2,10 +2,15 @@
   padding-top: 100px;
   display: inline-flex;
   justify-content: space-evenly;
+  width: 100%;
   .text-zone {
     position: relative;
     width: 45%;
 
+    .contact-text {
+      opacity: 0;
+      animation: fadeInUp 2s 1.5s forwards;
+    }
     .contact-form {
       width: 100%;
       margin-top: 20px;
@@ -77,13 +82,15 @@
   .map-wrap{
     width: 45%;
     height: 85vh;
+    opacity: 0;
+    animation: fadeInRight 2s 2s forwards;
     .info-map{
       background-color: black;
       width: 150px;
       height: 80px;
       position: fixed;
-      top: 130px;
-      right: 3.5%;
+      top: 30px;
+      right: 0;
       z-index: 3;
       font-family: "Coolvetica";
       font-size: 10px;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { styled, Typography, Slider, Paper, Stack, Box } from "@mui/material";
 import { useAudio } from "./audio-hooks";
 
@@ -8,7 +8,7 @@ import VolumeDownIcon from "@mui/icons-material/VolumeDown";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import VolumeMuteIcon from "@mui/icons-material/VolumeMute";
-
+import CircularProgress from "@mui/material/CircularProgress";
 import PauseIcon from "@mui/icons-material/Pause";
 import Replay30Icon from "@mui/icons-material/Replay30";
 import Forward30Icon from "@mui/icons-material/Forward30";
@@ -38,27 +38,20 @@ const PSlider = styled(Slider)(({ theme, ...props }) => ({
 // #endregion ---------------------------------------------------------------
 
 export default function Player() {
-  const {
-    audioSrc,
-    setAudioSrc,
-    coverArt,
-    setCoverArt,
-    isPlaying,
-    setIsPlaying,
-  } = useAudio();
+  const { audioSrc, coverArt, isPlaying, setIsPlaying } = useAudio();
   const audioPlayer = useRef();
   const verticalVolumeBar = useRef();
   const actualVolumeRef = useRef();
 
   // const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0);
+  const [volume, setVolume] = useState(60);
   const [mute, setMute] = useState(false);
 
   const [elapsed, setElapsed] = useState(0);
   const [duration, setDuration] = useState(0);
-  // const [audioSrc, setAudioSrc] = useState("../../static/audio/audio1.mp3");
-  // const [coverArt, setCoverArt] = useState("../images/defaultCover.jpg");
+  const [isLoading, setIsLoading] = useState(false);
 
+  // console.log(audioPlayer.current.readyState)
   useEffect(() => {
     gsap.fromTo(
       actualVolumeRef.current,
@@ -66,14 +59,27 @@ export default function Player() {
       { height: `${(volume / 100) * 55}px`, duration: 1 }
     );
   }, [volume]);
-  // useEffect(() => {
-  //   if (window.localStorage.getItem("browserCoverArt") === null) {
-  //     setAudioSrc("../../static/audio/audio1.mp3");
-  //     setCoverArt("../images/defaultCover.jpg");
-  //   }
-  //   setAudioSrc(window.localStorage.getItem("browserAudioSrc"));
-  //   setCoverArt(window.localStorage.getItem("browserCoverArt"));
-  // }, [window.localStorage.getItem("browserAudioSrc")]);
+
+  useEffect(() => {
+    audioPlayer.current.play();
+    if (audioPlayer.current.readyState === 0) {
+      setIsLoading(true);
+    }
+    console.log(audioPlayer.current.readyState);
+  }, [audioSrc, setIsPlaying]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (audioPlayer.current.readyState === 4) {
+        setIsLoading(false);
+      }else {
+        setIsLoading(true);
+      }
+    }, 500);
+  
+    return () => clearInterval(interval);
+  }, []);
+
 
   useEffect(() => {
     if (audioPlayer) {
@@ -124,6 +130,27 @@ export default function Player() {
     audioPlayer.current.currentTime -= 10;
   };
 
+  function PlayPause() {
+    return isLoading === true ? (
+      <CircularProgress sx={{ color: "#dd1010", "&:hover": { color: "white" },cursor:"wait" }}
+      />
+    ) : isPlaying ? (
+      <PauseIcon
+        className="play-pause"
+        fontSize={"large"}
+        sx={{ color: "#dd1010", "&:hover": { color: "white" } }}
+        onClick={togglePlay}
+      />
+    ) : (
+      <PlayArrowIcon
+        className="play-pause"
+        fontSize="large"
+        sx={{ color: "#dd1010", "&:hover": { color: "white" } }}
+        onClick={togglePlay}
+      />
+    );
+  }
+
   function VolumeBtns() {
     return mute ? (
       <VolumeOffIcon
@@ -167,10 +194,9 @@ export default function Player() {
   };
   return (
     <>
-      <audio src={audioSrc} ref={audioPlayer} muted={mute} autoPlay />
+      <audio src={audioSrc} ref={audioPlayer} muted={mute} autoPlay={false} />
       <CustomPaper
         sx={{
-          // backgroundImage: `url(${coverArt})`,
           backgroundColor: "#cdcdcd",
           width: "100%",
           height: "100%",
@@ -250,19 +276,7 @@ export default function Player() {
               onClick={toggleBackward}
             />
 
-            {!isPlaying ? (
-              <PlayArrowIcon
-                fontSize="large"
-                sx={{ color: "#dd1010", "&:hover": { color: "white" } }}
-                onClick={togglePlay}
-              />
-            ) : (
-              <PauseIcon
-                fontSize={"large"}
-                sx={{ color: "#dd1010", "&:hover": { color: "white" } }}
-                onClick={togglePlay}
-              />
-            )}
+            <PlayPause />
 
             <Forward30Icon
               sx={{ color: "#dd1010", "&:hover": { color: "white" } }}
