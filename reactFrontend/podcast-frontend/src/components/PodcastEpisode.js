@@ -9,6 +9,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import { useAudio } from "./audio-hooks";
 const Img = styled("img")({
   margin: "auto",
   display: "block",
@@ -19,15 +20,25 @@ const Img = styled("img")({
 function PodcastEpisode(props) {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
+  const {
+    audioSrc,
+    setAudioSrc,
+    coverArt,
+    setCoverArt,
+    isPlaying,
+    setIsPlaying,
+  } = useAudio();
 
   return (
     <Paper
       sx={{
         p: 2,
-        margin: "auto",
-        maxWidth: 900,
+        backgroundColor: "#136f73",
+        margin: "20px 0",
+        width: "100%",
         maxHeight: 150,
         flexGrow: 1,
+        boxShadow: "0 0 15px lightyellow",
       }}
     >
       <Grid container spacing={1} direction="row">
@@ -36,8 +47,11 @@ function PodcastEpisode(props) {
             <ButtonBase
               sx={{ width: 100, height: 100 }}
               onClick={() => {
-                window.localStorage.setItem("browserAudioSrc", props.audio);
-                window.localStorage.setItem("browserCoverArt", props.imgSrc);
+                setAudioSrc(props.audio);
+                setCoverArt(props.imgSrc);
+                setIsPlaying(true);
+                // window.localStorage.setItem("browserAudioSrc", props.audio);
+                // window.localStorage.setItem("browserCoverArt", props.imgSrc);
               }}
             >
               <Img src={props.imgSrc} />
@@ -46,8 +60,9 @@ function PodcastEpisode(props) {
             <ButtonBase
               sx={{ width: 140, height: 140 }}
               onClick={() => {
-                window.localStorage.setItem("browserAudioSrc", props.audio);
-                window.localStorage.setItem("browserCoverArt", props.imgSrc);
+                setAudioSrc(props.audio);
+                setCoverArt(props.imgSrc);
+                setIsPlaying(true);
               }}
             >
               <Img src={props.imgSrc} />
@@ -63,25 +78,21 @@ function PodcastEpisode(props) {
             direction="column"
           >
             <Grid item className="podcast--title">
-              <Typography gutterBottom variant="h6" fontSize={13}>
-                {props.title}
-              </Typography>
+              <h4>{props.title}</h4>
             </Grid>
             <Grid item className="podcast--info--text">
-              <Typography gutterBottom variant="body2" fontSize={11}>
-                {props.infoText}
-              </Typography>
+              <p> {props.infoText}</p>
             </Grid>
             <Grid item className="listen--btn">
-              <div onClick={() => props.callback(props.audio)}>
-                <Typography
-                  fontSize={11}
-                  gutterBottom
-                  variant="subtitle2"
-                  sx={{ cursor: "pointer" }}
-                >
-                  Listen now
-                </Typography>
+              <div
+                onClick={() => {
+                  setAudioSrc(props.audio);
+                  setCoverArt(props.imgSrc);
+                  setIsPlaying(true);
+                }}
+                className="listennow-btn"
+              >
+                <p>Listen now</p>
               </div>
             </Grid>
           </Grid>
@@ -94,24 +105,21 @@ function PodcastEpisode(props) {
             direction="column"
           >
             <Grid item className="podcast--title">
-              <Typography gutterBottom variant="h6">
-                {props.title}
-              </Typography>
+              <h4>{props.title}</h4>
             </Grid>
             <Grid item className="podcast--info--text">
-              <Typography gutterBottom variant="body2">
-                {props.infoText}
-              </Typography>
+              <p> {props.infoText}</p>
             </Grid>
             <Grid item className="listen--btn">
-              <div onClick={() => props.callback(props.audio)}>
-                <Typography
-                  gutterBottom
-                  variant="subtitle2"
-                  sx={{ cursor: "pointer" }}
-                >
-                  Listen now
-                </Typography>
+              <div
+                className="listennow-btn"
+                onClick={() => {
+                  setAudioSrc(props.audio);
+                  setCoverArt(props.imgSrc);
+                  setIsPlaying(true);
+                }}
+              >
+                <p>Listen now</p>
               </div>
             </Grid>
           </Grid>

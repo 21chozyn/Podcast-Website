@@ -1,16 +1,16 @@
 import HeroSection from "./HeroSection.js";
 import PodcastHome from "./PodcastHome";
 
-import React from 'react'
+import React from "react";
+import PodcastPage from "./PodcastPage.js";
 
 const Home = () => {
   return (
-    
     <React.Fragment>
-    <HeroSection />
-    <PodcastHome />
+      <HeroSection />
+      <PodcastPage />
     </React.Fragment>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

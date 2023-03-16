@@ -39,7 +39,7 @@ const TeamPage = () => {
         container
         rowSpacing={7}
         columnSpacing={2}
-        sx={{ flexGrow: 1, padding: 5 }}
+        sx={{ flexGrow: 1, padding: 5, marginTop:"50px" }}
       >
         <Grid
           item

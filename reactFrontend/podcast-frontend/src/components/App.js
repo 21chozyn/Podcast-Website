@@ -9,6 +9,9 @@ import Error from "./Error";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "../css/index.css";
+import Layout from "./Layout";
+import PodcastPage from "./PodcastPage";
+import Contact from "./Contact";
 
 export default function App() {
   return (
@@ -17,18 +20,14 @@ export default function App() {
         name="viewport"
         content="width=device-width, initial-scale=1, shrink-to-fit=no"
       />
-      <Header />
+      <Layout />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage />}></Route>
         <Route path="/team" element={<TeamPage />} />
-        <Route path="/podcast" element={<PodcastHome />} />
-        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/podcast" element={<PodcastPage style={{marginTop:"130px"}} />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Error />} />
       </Routes>
-
-      <div style={{ position: "relative", width: "100vw" }}>
-        <Player />
-      </div>
       <br />
       <br />
 

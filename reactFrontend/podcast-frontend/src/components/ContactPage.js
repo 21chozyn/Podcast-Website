@@ -1,7 +1,8 @@
 import { Box, Typography, TextField, Grid, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import React, { useRef, useState, useReducer } from "react";
-import { useForm } from "react-hook-form";
+
+import Loader from 'react-loaders';
 
 const Contact = () => {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
@@ -225,6 +226,7 @@ const Contact = () => {
       </Grid>
       <br />
       <br />
+      <Loader type="line-spin-fade-loader" />
     </React.Fragment>
   );
 };

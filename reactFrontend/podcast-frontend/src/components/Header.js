@@ -65,7 +65,7 @@ const Header = () => {
   return (
     <>
       <div className="Header">
-        <LoadingSpinner isLoading={isLoading} />
+        {/* <LoadingSpinner isLoading={isLoading} /> */}
         <AppBar
           sx={{
             backgroundColor: headerColor.color,
@@ -76,7 +76,7 @@ const Header = () => {
             {isMatch ? (
               <>
                 {/* <AudioPlayer inHeader={true} /> */}
-                <Typography>The Rez Issues</Typography>
+                <Typography sx={{color:"#9c27b0"}}>The Rez Issues</Typography>
                 <DrawerComp drawerClose={navigateTo} />
               </>
             ) : (

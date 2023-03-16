@@ -1,5 +1,5 @@
 .audio--player {
-  --primary: #8c1f85;
+  --primary: #dd1010;
   --secondary: #2f4f4f;
   display: flex;
   justify-content: center;
@@ -49,7 +49,7 @@
   --seek-before-width: 0px;
   --seek-before-color: #031108;
   --knobby: #2f4f4f;
-  --selectedKnobby: #ff00ee;
+  --selectedKnobby: #dd1010;
 
   appearance: none;
   background: var(--bar-bg);

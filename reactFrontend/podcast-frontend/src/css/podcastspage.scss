@@ -1,0 +1,129 @@
+.podcasts-container {
+  width: 100%;
+  min-height: 800px;
+  margin: 10px;
+
+  .search-filter-container {
+    // background-color: white;
+    height: 80px;
+    width: 95%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 3px;
+    display: inline-flex;
+    justify-content: flex-end;
+
+    .search-bar {
+      color: white;
+      background-color: #136f73;
+      border: none;
+      border-right: 2px solid #003739;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 55px;
+      width: 45%;
+      border-radius: 20px 0 0 20px;
+      font-size: 30px;
+      padding-left: 10px;
+      font-family: "Coolvetica";
+      letter-spacing: 3px;
+      transition: all 0.5s;
+
+      ::placeholder {
+        color: white;
+      }
+      .search-bar:active {
+        opacity: 0.7;
+      }
+    }
+    .dropdown {
+      transition: all 0.5s;
+      color: white;
+      background-color: #136f73;
+      border: none;
+      position: relative;
+      top: 50%;
+      transform: translate(0, -50%);
+      height: 55px;
+      width: 45%;
+      border-radius: 0 20px 20px 0;
+      font-size: 30px;
+      border-left: 2px solid #003739;
+
+      cursor: pointer;
+    }
+    .search-btn {
+      position: relative;
+      margin: 0;
+      right: 0%;
+      top: 50%;
+      transform: translate(0 ,-50%);
+      cursor: pointer;
+      transition: all 0.5s;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 15px;
+    }
+    .search-btn:hover {
+      background-color: #136f73;
+      svg {
+        color: white;
+      }
+    }
+    .search-btn:active {
+      opacity: 0.5;
+    }
+    svg {
+      color: #136f73;
+      transform: scale(3);
+      transition: all 0.5s;
+    }
+  }
+  h2 {
+    position: relative;
+    text-align: center;
+ 
+  }
+  .podcasts-div {
+    margin-top: 50px;
+    width: 80%;
+    height: auto;
+    // background-color: #136f73;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+::-webkit-input-placeholder {
+  /* Edge */
+  color: white;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer */
+  color: white;
+}
+
+::placeholder {
+  color: white;
+}
+.pagination {
+  width: 140px;
+  height: 50px;
+  position: relative;
+  bottom: -7%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // button{
+  //     background-color: #dd1010;
+  // }
+}

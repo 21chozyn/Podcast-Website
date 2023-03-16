@@ -1,17 +1,83 @@
+@import "animate.css";
+
+@font-face {
+  font-family: "Helvetica Neue";
+  src: url("../assets/fonts/helvetica-neu.ttf") format("ttf");
+}
+
+@font-face {
+  font-family: "La Belle Aurore";
+  src: url("../assets/fonts/LaBelleAurore.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Coolvetica";
+  src: url("../assets/fonts/CoolveticaRg-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Tilt Prism", cursive;
+  src: url("https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap");
+}
+input,
+textarea {
+  font-family: "Helvetica Neue";
+}
+
+html {
+  font-size: 62.5%;
+}
+
 .Header {
-    /* padding-bottom: 55px; */
-    width: 100%;
+  /* padding-bottom: 55px; */
+  width: 100%;
 }
-body{
-    margin: 0;
-    padding: 0;
+body {
+  margin: 0;
+  font-family: 300 11px/1.4 "Helvetica Neue", "sans-serif";
+  color: #2d2d32;
+  background-color: #003739;
+  overflow: hidden;
+  display: block;
+  padding: 0;
 }
-html,body{
-    overflow-x: clip;
+html,
+body {
+  overflow-x: clip;
 }
-#audio--player--wrapper{
-    position: fixed;
-    bottom: 0px;
-    width: 100vw;
-    background-color: rgb(32, 32, 32);
+#audio--player--wrapper {
+  position: fixed;
+  bottom: 0px;
+  width: 100vw;
+  background-color: rgb(32, 32, 32);
+}
+
+.volume-progress-bar :hover {
+  opacity: 0.4;
+}
+h1 {
+  color: white;
+  font-size: 53px;
+  margin: 0;
+  font-family: "Tilt Prism", cursive;
+  font-weight: 400;
+}
+h2 {
+  color: #dd1010;
+  font-size: 35px;
+  font-family: "Coolvetica";
+  letter-spacing: 5px;
+}
+h4 {
+  color: white;
+  font-size: 20px;
+  font-family: "Coolvetica";
+  letter-spacing: 5px;
+  margin: 5px 0;
+  font-weight: 600;
+  border-bottom: 5px solid white;
+  display: inline-block;
+}
+p {
+  color: white;
+  font-size: 20px;
+  font-family: "La Belle Aurore";
 }

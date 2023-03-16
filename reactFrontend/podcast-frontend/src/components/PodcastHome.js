@@ -10,17 +10,17 @@ import {
 import "../css/home.css";
 import PodcastEpisode from "./PodcastEpisode";
 import SearchIcon from "@mui/icons-material/Search";
+import vinyl from "../assets/images/coverArt1.jpg";
 
 function PodcastHome() {
   const initialPodcastEpisodes = [
     {
       id: 1,
       title: "uz shortage of housing",
-      coverArt: "../../static/images/cover1.jpeg",
+      coverArt: vinyl,
       description:
         "this is podcast info text here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Interne",
-      audio:
-        "https://cdn.simplecast.com/audio/cae8b0eb-d9a9-480d-a652-0defcbe047f4/episodes/af52a99b-88c0-4638-b120-d46e142d06d3/audio/500344fb-2e2b-48af-be86-af6ac341a6da/default_tc.mp3",
+      audio: "vinyl",
       createdAt: "30/01/2022",
       coHost: "blessed pukka",
       Host: "Travis Mawere",
@@ -28,11 +28,10 @@ function PodcastHome() {
     {
       id: 1,
       title: "sex scandal on campus",
-      coverArt: "../../static/images/cover1.jpeg",
+      coverArt: vinyl,
       description:
         "this is podcast info text here are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Interne",
-      audio:
-        "https://cdn.simplecast.com/audio/cae8b0eb-d9a9-480d-a652-0defcbe047f4/episodes/af52a99b-88c0-4638-b120-d46e142d06d3/audio/500344fb-2e2b-48af-be86-af6ac341a6da/default_tc.mp3",
+      audio: "vinyl",
       createdAt: "30/01/2022",
       coHost: "blessed pukka",
       Host: "Travis Mawere",
@@ -163,7 +162,7 @@ function PodcastHome() {
           count={Math.ceil(apiData.count / podcastsPerPage)}
           page={page}
           onChange={handlePagination}
-          color="secondary"
+          color="error"
         />
       </Stack>
 

@@ -1,48 +1,82 @@
-import React from "react";
-import { Typography, Button } from "@mui/material";
+import React, { useEffect, useState, useRef } from "react";
+import gsap from "gsap-trial";
 import "../css/heroSection.css";
-import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
-
+import AnimatedLetters from "./AnimatedLetters";
 
 const HeroSection = () => {
-  const handleClickScroll = () => {
-    const element = document.getElementById('podcastSection');
-    if (element) {
-      // 👇 Will scroll smoothly to the top of the next section
-      element.scrollIntoView( { align:true, behavior: 'smooth' });
+  const [doThisText, setDoThisText] = useState(
+    "Listen to our funniest podcasts"
+  );
+  const [doThisTextClass, setDoThisTextClass] = useState("do-this-text");
+  const handleTouch = () => {
+    setDoThisTextClass("do-this-text-gsap")
+    setDoThisText((currentText) =>
+      currentText == "Listen to our funniest podcasts"
+        ? "Watch some of our funniest tiktoks"
+        : "Listen to our funniest podcasts"
+    );
+    gsap.timeline().fromTo(
+      doThisRef.current,
+      { opacity: 0, transform: "rotateX(90deg)" },
+      { opacity: 1, transform: "rotateX(0)", duration: 1 }
+    );
+    if (doThisText == "Watch some of our funniest tiktoks"){
+    gsap.timeline().to(
+      spinnerRef.current,
+      {transform: "rotate3d(0, 1, 0, -90deg)", duration: 1}
+    )}
+    else{
+      gsap.timeline().to(
+        spinnerRef.current,
+        {transform: "rotate3d(0, 0, 0, 0)", duration: 1}
+      )
     }
   };
+  const handleClickScroll = () => {
+    const element = document.getElementById("podcastSection");
+    if (element) {
+      // 👇 Will scroll smoothly to the top of the next section
+      element.scrollIntoView({ align: true, behavior: "smooth" });
+    }
+  };
+
+  const [letterClass, setLetterClass] = useState("text-animate");
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLetterClass("text-animate-hover");
+    }, 4000);
+  }, []);
+
+  const doThisRef = useRef();
+  const spinnerRef = useRef();
   return (
-    <div className="hero-container">
-      <Typography
-        align="center"
-        sx={{fontWeight:"bold", typography: { md: "h1", sm: "h2", xs: "h3" } }}
-        color="common.white"
-      >
-        Listen to the latest UZ stories
-      </Typography>
-      <Typography
-        align="center"
-        sx={{ typography: { md: "h4", sm: "h5", xs: "h6" } }}
-        color="common.white"
-      >
+    <div className="hero-container" onClick={handleTouch}>
+      <h1>
+        <AnimatedLetters
+          letterClass={letterClass}
+          strArray={"The Rez Issue".split("")}
+          idx={1}
+        />
+        <br />
+        <AnimatedLetters
+          letterClass={letterClass}
+          strArray={"Welcomes You".split("")}
+          idx={13}
+        />
+      </h1>
+      <br/>
+      <h2 className={doThisTextClass} ref={doThisRef}>{doThisText}</h2>
+
+      <p className="sub-text">
         What are you still waiting for?
-      </Typography>
+      </p>
       <br />
-      <div className="hero--btn--div">
-        <Button
-          className="hero--btn"
-          endIcon={<ExpandCircleDownIcon/>}
-          variant="contained"
-          onClick={handleClickScroll}
-          sx={{
-            color: "#2f4f4f",
-            backgroundColor: "#fff",
-            "&:hover": { backgroundColor: "#2f4f4f", color:"white"},
-          }}
-        >
-          listen
-        </Button>
+      <div className="hero-btn-container">
+        <div className="spinner" ref={spinnerRef}>
+          <div className="btn-1">Listen</div>
+          <div className="btn-2">Watch</div>
+        </div>
       </div>
     </div>
   );
