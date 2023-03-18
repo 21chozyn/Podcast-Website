@@ -10,6 +10,10 @@
     .contact-text {
       opacity: 0;
       animation: fadeInUp 2s 1.5s forwards;
+
+      font-size: 15px;
+      font-family: "Helvetica Neue";
+      margin: 5px 0;
     }
     .contact-form {
       width: 100%;
@@ -78,21 +82,20 @@
         border-radius: 4px;
         transition: all 0.5s;
         cursor: pointer;
-
       }
-      .flat-button:hover{
+      .flat-button:hover {
         background-color: #dd1010;
         color: white;
         border: 1px solid white;
       }
     }
   }
-  .map-wrap{
+  .map-wrap {
     width: 45%;
     height: 85vh;
     opacity: 0;
     animation: fadeInRight 2s 2s forwards;
-    .info-map{
+    .info-map {
       background-color: black;
       width: 150px;
       height: 80px;
@@ -107,23 +110,60 @@
       font-weight: 100;
       color: white;
       padding: 5px;
-
     }
-    #map{
+    #map {
       position: relative;
       height: 700px;
       width: 100%;
       top: 30px;
-      
+
       left: 0;
       z-index: 2;
 
-      .leaflet-popup-content{
+      .leaflet-popup-content {
         font-size: 12px;
         font-family: "Coolvetica";
         letter-spacing: 1px;
         line-height: 15px;
       }
+    }
+  }
+}
+@media (width >= 1201px) {
+}
+@media (1025px <= width <= 1200px) {
+}
+@media (960px <= width <= 1024px) {
+}
+@media (870px <= width <= 959px) {
+}
+@media (768px <= width <= 869px) {
+}
+@media (611px <= width <= 767px) {
+}
+@media (446px <= width <= 610px) {
+  .contact-page {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .text-zone {
+      width: 90%;
+    }
+    .map-wrap {
+      width: 90%;
+    }
+  }
+}
+@media (320px <= width <= 445px) {
+  .contact-page {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .text-zone {
+      width: 90%;
+    }
+    .map-wrap {
+      width: 90%;
     }
   }
 }

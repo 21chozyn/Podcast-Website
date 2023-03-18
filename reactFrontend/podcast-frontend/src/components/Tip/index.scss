@@ -1,5 +1,6 @@
 #tip {
   position: fixed;
+  z-index: 3;
   bottom: 0;
   right: 0;
   height: auto;
@@ -9,7 +10,7 @@
   border-radius: 5px;
   opacity: 0;
   animation: bounceIn 1s 5s;
-  animation-fill-mode: both;
+  animation-fill-mode: forwards;
   p{
     margin: auto;
     text-align: center;
