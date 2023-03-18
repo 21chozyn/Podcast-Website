@@ -9,7 +9,6 @@
 }
 .podcast--home {
   margin-top: 2%;
-
 }
 .subscribe--page {
   padding-bottom: 5%;
@@ -35,66 +34,74 @@
   margin: "auto";
   max-width: 925px;
 }
-.navbar--section{
+.navbar--section {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 25px;
 }
-.audio--player{
+.audio--player {
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.listen--btn{
+.listen--btn {
   max-width: 60px;
 }
-#nav--search{
+#nav--search {
   display: flex;
   justify-content: center;
 }
 
-#podcast--search--btn{
+#podcast--search--btn {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px;
-  
 }
-#podcast--search--btn :hover{
+#podcast--search--btn :hover {
   cursor: pointer;
 }
 
-p{
+p {
   font-size: 15px;
   font-family: "Helvetica Neue";
   margin: 5px 0;
 }
-.listennow-btn{
+.listennow-btn {
   margin: 5px;
   max-width: 80px;
   height: 20px;
   background-color: #dd1010;
-display: flex;
-justify-content: center;
-align-items: center;
-border-radius: 6px;
-cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  cursor: pointer;
+  p{
+    font-family: "Helvetica Neue";
+    font-size: 15px;
+  }
 }
-.podcast--info--text{
+.podcast--info--text {
   overflow-y: auto;
   height: 90px;
+  p {
+    color: white;
+    font-size: 15px;
+    font-family: "Helvetica Neue";
+  }
 }
-.podcast{
+.podcast {
   opacity: 0;
-    animation: fadeInLeft 1s 2.5s;
-    animation-fill-mode: forwards;
-    width: 100%;
-    margin: 20px 0;
+  animation: fadeInLeft 1s 2.5s;
+  animation-fill-mode: forwards;
+  width: 100%;
+  margin: 20px 0;
 }
 @for $i from 1 through 5 {
-  .podcast._#{$i}{
-      animation-delay: #{$i/5}s;
+  .podcast._#{$i} {
+    animation-delay: #{$i/5}s;
   }
 }
