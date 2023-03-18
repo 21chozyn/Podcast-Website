@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef ,useCallback} from "react";
+import React, { useEffect, useRef } from "react";
 import "./index.scss";
 import defaultImg from "../../images/avatar3.png";
 import { gsap } from "gsap-trial";

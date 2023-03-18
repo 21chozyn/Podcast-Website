@@ -65,7 +65,6 @@ export default function Player() {
     if (audioPlayer.current.readyState === 0) {
       setIsLoading(true);
     }
-    console.log(audioPlayer.current.readyState);
   }, [audioSrc, setIsPlaying]);
 
   useEffect(() => {

@@ -3,7 +3,7 @@ import "./index.scss";
 import Member from "./Member";
 import Loading from "../Loading";
 import AnimatedLetters from "../AnimatedLetters";
-import defaultImg from "../../images/avatar3.png";
+// import defaultImg from "../../images/avatar3.png";
 import Tip from "../Tip";
 
 const Index = () => {
@@ -23,7 +23,7 @@ const Index = () => {
     },
   ];
   const [teamMembers, setTeamMembers] = useState(initialMembers);
-  const [loading, setLoading] = useState(true);
+  const [, setLoading] = useState(true);
 
   useEffect(() => {
     fetch(`http://54.89.27.89:8000/api/team`)
@@ -54,6 +54,7 @@ const Index = () => {
           picture={member.pictureThumb}
         />
       ))}
+      
       <Loading />
       <Tip tip="Hover on or click the avatar for more infomation" />
     </div>

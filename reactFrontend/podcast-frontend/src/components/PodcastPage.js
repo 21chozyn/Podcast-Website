@@ -72,11 +72,7 @@ const PodcastPage = (props) => {
       `http://100.25.163.230:8000/api/podcast/?limit=${podcastsPerPage}&offset=0&search=${searchInput.current.value}&ordering=${orderingInput.current.value}`
     );
   };
-  const handleKeypress = (e) => {
-    if (e.keyCode === 13) {
-      handleSearch();
-    }
-  };
+
  
   const [podcastEpisodes, setPodcastEpisodes] = useState(
     initialPodcastEpisodes

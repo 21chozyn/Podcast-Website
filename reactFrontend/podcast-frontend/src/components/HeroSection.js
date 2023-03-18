@@ -11,7 +11,7 @@ const HeroSection = () => {
   const handleTouch = () => {
     setDoThisTextClass("do-this-text-gsap")
     setDoThisText((currentText) =>
-      currentText == "Listen to our funniest podcasts"
+      currentText === "Listen to our funniest podcasts"
         ? "Watch some of our funniest tiktoks"
         : "Listen to our funniest podcasts"
     ); 
@@ -20,7 +20,7 @@ const HeroSection = () => {
       { opacity: 0, transform: "rotateX(90deg)" },
       { opacity: 1, transform: "rotateX(0)", duration: 1 }
     );
-    if (doThisText == "Listen to our funniest podcasts"){
+    if (doThisText === "Listen to our funniest podcasts"){
     gsap.timeline().to(
       spinnerRef.current,
       {transform: "rotate3d(0, 1, 0, -90deg)", duration: 1}
