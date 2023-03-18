@@ -2,16 +2,16 @@ import React from "react";
 import Header from "./Header";
 import PodcastHome from "./PodcastHome";
 import Player from "./Player";
-import TeamPage from "./TeamPage";
 import ContactPage from "./ContactPage";
 import HomePage from "./HomePage";
 import Error from "./Error";
 import Footer from "./Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "../css/index.css";
+import "../css/index.scss";
 import Layout from "./Layout";
 import PodcastPage from "./PodcastPage";
 import Contact from "./Contact";
+import Team from "./Team"
 
 export default function App() {
   return (
@@ -23,7 +23,7 @@ export default function App() {
       <Layout />
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="/team" element={<TeamPage />} />
+        <Route path="/team" element={<Team />} />
         <Route path="/podcast" element={<PodcastPage style={{marginTop:"130px"}} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Error />} />

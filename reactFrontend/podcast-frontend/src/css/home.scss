@@ -86,3 +86,15 @@ cursor: pointer;
   overflow-y: auto;
   height: 90px;
 }
+.podcast{
+  opacity: 0;
+    animation: fadeInLeft 1s 2.5s;
+    animation-fill-mode: forwards;
+    width: 100%;
+    margin: 20px 0;
+}
+@for $i from 1 through 5 {
+  .podcast._#{$i}{
+      animation-delay: #{$i/5}s;
+  }
+}

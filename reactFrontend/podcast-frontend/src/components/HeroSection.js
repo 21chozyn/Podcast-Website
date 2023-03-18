@@ -14,13 +14,13 @@ const HeroSection = () => {
       currentText == "Listen to our funniest podcasts"
         ? "Watch some of our funniest tiktoks"
         : "Listen to our funniest podcasts"
-    );
+    ); 
     gsap.timeline().fromTo(
       doThisRef.current,
       { opacity: 0, transform: "rotateX(90deg)" },
       { opacity: 1, transform: "rotateX(0)", duration: 1 }
     );
-    if (doThisText == "Watch some of our funniest tiktoks"){
+    if (doThisText == "Listen to our funniest podcasts"){
     gsap.timeline().to(
       spinnerRef.current,
       {transform: "rotate3d(0, 1, 0, -90deg)", duration: 1}
@@ -33,7 +33,7 @@ const HeroSection = () => {
     }
   };
   const handleClickScroll = () => {
-    const element = document.getElementById("podcastSection");
+    const element = document.getElementById("podcasts-container");
     if (element) {
       // 👇 Will scroll smoothly to the top of the next section
       element.scrollIntoView({ align: true, behavior: "smooth" });
@@ -52,17 +52,18 @@ const HeroSection = () => {
   const spinnerRef = useRef();
   return (
     <div className="hero-container" onClick={handleTouch}>
+      <div className="background" ></div>
       <h1>
         <AnimatedLetters
           letterClass={letterClass}
           strArray={"The Rez Issue".split("")}
-          idx={1}
+          idx={20}
         />
         <br />
         <AnimatedLetters
           letterClass={letterClass}
           strArray={"Welcomes You".split("")}
-          idx={13}
+          idx={30}
         />
       </h1>
       <br/>
@@ -74,7 +75,7 @@ const HeroSection = () => {
       <br />
       <div className="hero-btn-container">
         <div className="spinner" ref={spinnerRef}>
-          <div className="btn-1">Listen</div>
+          <div className="btn-1" onClick={handleClickScroll}>Listen</div>
           <div className="btn-2">Watch</div>
         </div>
       </div>

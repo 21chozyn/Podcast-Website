@@ -2,17 +2,18 @@
   width: 100%;
   min-height: 800px;
   margin: 10px;
-
+display: grid;
   .search-filter-container {
     // background-color: white;
     height: 80px;
     width: 95%;
     position: relative;
-    left: 50%;
-    transform: translate(-50%);
+    justify-self: center;
     margin: 3px;
     display: inline-flex;
     justify-content: flex-end;
+    opacity: 0;
+    animation: fadeInUp 2s 2s forwards;
 
     .search-bar {
       color: white;
@@ -87,6 +88,8 @@
   h2 {
     position: relative;
     text-align: center;
+    opacity: 0;
+    animation: fadeInUp 2s 2.5s forwards;
  
   }
   .podcasts-div {

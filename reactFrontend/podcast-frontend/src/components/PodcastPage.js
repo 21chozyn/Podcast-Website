@@ -2,11 +2,10 @@ import React, { useEffect, useState, useRef } from "react";
 import PodcastEpisode from "./PodcastEpisode";
 import "../css/podcastspage.scss";
 import SearchIcon from "@mui/icons-material/Search";
-import Select from "react-select";
-import makeAnimated from "react-select/animated";
+import Loading from "./Loading"
+
 import { Pagination } from "@mui/material";
 
-const animatedComponents = makeAnimated();
 
 const PodcastPage = (props) => {
   const initialPodcastEpisodes = [
@@ -78,11 +77,13 @@ const PodcastPage = (props) => {
       handleSearch();
     }
   };
+ 
   const [podcastEpisodes, setPodcastEpisodes] = useState(
     initialPodcastEpisodes
   );
   const [apiData, setApiData] = useState(initialApiData);
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetch(fetchLink)
       .then((response) => response.json())
       .then((usefulData) => {
@@ -99,7 +100,7 @@ const PodcastPage = (props) => {
   }, [fetchLink]);
 
   return (
-    <div className="podcasts-container" style={props.style}>
+    <div className="podcasts-container" id="podcasts-container" style={props.style}>
       <div className="search-filter-container">
         <input
           type="search"
@@ -122,15 +123,16 @@ const PodcastPage = (props) => {
       <h2>Page: {page}</h2>
       <div className="podcasts-div">
         {podcastEpisodes.map((podcastEpisode, index) => (
-          <PodcastEpisode
-            key={index}
-            className="podcast"
-            title={podcastEpisode.title}
-            infoText={podcastEpisode.description}
-            imgSrc={podcastEpisode.coverArt}
-            audio={podcastEpisode.audio}
-          />
+          <div key={index} className={`podcast _${index + 20}`}>
+            <PodcastEpisode
+              title={podcastEpisode.title}
+              infoText={podcastEpisode.description}
+              imgSrc={podcastEpisode.coverArt}
+              audio={podcastEpisode.audio}
+            />
+          </div>
         ))}
+
         <Pagination
           className="pagination"
           count={Math.ceil(apiData.count / podcastsPerPage)}
@@ -139,6 +141,7 @@ const PodcastPage = (props) => {
           color="error"
         />
       </div>
+      <Loading />
     </div>
   );
 };

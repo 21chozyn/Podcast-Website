@@ -1,8 +1,7 @@
 import { Box, Typography, TextField, Grid, Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import React, { useRef, useState, useReducer } from "react";
-
-import Loader from 'react-loaders';
+import React, { useRef, useState, useReducer, useEffect } from "react";
+import Loading from "./Loading";
 
 const Contact = () => {
   const [ignored, forceUpdate] = useReducer((x) => x + 1, 0);
@@ -47,6 +46,9 @@ const Contact = () => {
       helperText: "",
     },
   ];
+  useEffect(()=>{
+    window.scrollTo(0, 0);
+  })
   const [validateAttrib, setValidateAttrib] = useState(attributes);
   const validate = (index, textboxRef) => {
     const curAttributes = validateAttrib;
@@ -226,7 +228,7 @@ const Contact = () => {
       </Grid>
       <br />
       <br />
-      <Loader type="line-spin-fade-loader" />
+      <Loading />
     </React.Fragment>
   );
 };

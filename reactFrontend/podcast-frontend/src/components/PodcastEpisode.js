@@ -3,7 +3,6 @@ import "../css/home.scss";
 import {
   Grid,
   Paper,
-  Typography,
   ButtonBase,
   styled,
   useMediaQuery,
@@ -21,11 +20,8 @@ function PodcastEpisode(props) {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const {
-    audioSrc,
     setAudioSrc,
-    coverArt,
     setCoverArt,
-    isPlaying,
     setIsPlaying,
   } = useAudio();
 
@@ -34,7 +30,6 @@ function PodcastEpisode(props) {
       sx={{
         p: 2,
         backgroundColor: "#136f73",
-        margin: "20px 0",
         width: "100%",
         maxHeight: 150,
         flexGrow: 1,
@@ -50,8 +45,7 @@ function PodcastEpisode(props) {
                 setAudioSrc(props.audio);
                 setCoverArt(props.imgSrc);
                 setIsPlaying(true);
-                // window.localStorage.setItem("browserAudioSrc", props.audio);
-                // window.localStorage.setItem("browserCoverArt", props.imgSrc);
+
               }}
             >
               <Img src={props.imgSrc} />

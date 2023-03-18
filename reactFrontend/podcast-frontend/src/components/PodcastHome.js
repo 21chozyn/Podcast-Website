@@ -149,14 +149,14 @@ function PodcastHome() {
           Page: {page}
         </Typography>
         {podcastEpisodes.map((podcastEpisode, index) => (
-          <PodcastEpisode
-            key={index}
-            className="podcast"
-            title={podcastEpisode.title}
-            infoText={podcastEpisode.description}
-            imgSrc={podcastEpisode.coverArt}
-            audio={podcastEpisode.audio}
-          />
+          <div key={index} className={`podcast _${index}`}>
+            {/* <PodcastEpisode
+              title={podcastEpisode.title}
+              infoText={podcastEpisode.description}
+              imgSrc={podcastEpisode.coverArt}
+              audio={podcastEpisode.audio}
+            /> */}
+          </div>
         ))}
         <Pagination
           count={Math.ceil(apiData.count / podcastsPerPage)}

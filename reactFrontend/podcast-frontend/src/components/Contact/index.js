@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { MapContainer, Marker, Popup, TileLayer, useMap } from "react-leaflet";
-import Loader from "react-loaders";
 import AnimatedLetters from "../AnimatedLetters";
 import "./index.scss";
+import Loading from "../Loading"
 
 const Contact = () => {
   const location = [-17.784, 31.053];
@@ -87,7 +87,7 @@ const Contact = () => {
                   ></textarea>
                 </li>
                 <li className="btn">
-                  <input
+                  <input 
                     type="submit"
                     className="flat-button"
                     value="SEND"
@@ -101,14 +101,14 @@ const Contact = () => {
 
         <div className="map-wrap">
           <div className="info-map">
-            Panashe Mhonde,
+            The Rez Issue,
             <br />
             Zimbabwe,
             <br />
-            6th Str, 320
+            Northen Harare
             <br />
-            Sisk, Masvingo <br />
-            <span>panashemhondeh@gmail.com</span>
+            Mt Pleasant<br />
+            <span>info@therezissue.org</span>
           </div>
           <div id="map">
             <MapContainer
@@ -129,7 +129,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <Loader type="pacman" />
+      <Loading />
     </>
   );
 };

@@ -15,8 +15,7 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import DrawerComp from "./DrawerComp";
-import "../css/index.css";
-import LoadingSpinner from "./LoadingSpinner";
+import "../css/index.scss";
 
 const Header = () => {
   const navigate = useNavigate();

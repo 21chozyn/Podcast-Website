@@ -1,5 +1,5 @@
 import "../css/navbar.scss";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Logo from "../assets/images/Logo.png";
 import { Link, NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,9 +10,27 @@ import {
   faPodcast,
 } from "@fortawesome/free-solid-svg-icons";
 import Player from "./Player";
-import AudioPlayer from "./AudioPlayer";
+import { useAudio } from "./audio-hooks";
+import gsap from "gsap-trial";
 
 const Navbar = () => {
+  const { isPlaying } = useAudio();
+
+  const playerContainerRef = useRef();
+  useEffect(() => {
+    if (isPlaying === true) {
+      gsap.timeline().to(
+        playerContainerRef.current,
+        { opacity: 1,  duration: 1 }
+      );
+    }
+    else{
+      gsap.timeline().to(
+        playerContainerRef.current,
+        { opacity: 0.2,  duration: 1 ,delay:4}
+      );
+    }
+  },[isPlaying]);
   return (
     <div className="nav-bar">
       <Link className="logo" to="/">
@@ -47,7 +65,7 @@ const Navbar = () => {
           <FontAwesomeIcon icon={faEnvelope} />
         </NavLink>
       </nav>
-      <div className="player-container">
+      <div className="player-container" ref={playerContainerRef} style={{ opacity: 0.2 }}>
         <Player />
       </div>
     </div>

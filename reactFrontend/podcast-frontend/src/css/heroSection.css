@@ -1,5 +1,5 @@
 .hero-container {
-  background: url("../images/background1.jpg") center center/cover no-repeat;
+  /* background: url("../images/background1.jpg") center center/cover no-repeat; */
   height: 621px;
   width: 100%;
   display: block;
@@ -44,7 +44,7 @@ svg {
   top: 450px;
   text-align: center;
   width: 100%;
-  animation: fadeInDown 1s 3s forwards;
+  animation: fadeIn 2s 5s forwards;
 }
 .hero-btn-container {
   width: 200px;
@@ -52,7 +52,7 @@ svg {
   position: absolute;
   top: 540px;
   left: 45%;
-  animation: fadeInDown 1s 3.5s forwards;
+  animation: fadeIn 2s 5s forwards;
   opacity: 0;
 }
 .hero-btn-container .btn-1 {
@@ -99,7 +99,7 @@ svg {
 }
 .do-this-text {
   opacity: 0;
-  animation: fadeInDown 1s 2.5s forwards;
+  animation: fadeInDown 1s 4s forwards;
   position: absolute;
   top: 300px;
   left: 15%;
@@ -116,7 +116,15 @@ svg {
   width: 70%;
   display: inline;
 }
+.background{
+  background: url("../images/background1.jpg") center center/cover no-repeat;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: fadeInDown 3s 2s forwards;
 
+}
 @media (481px <= width <= 785px) {
   .text-animate-hover {
     font-size: 60px;
